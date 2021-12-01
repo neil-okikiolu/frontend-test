@@ -1,5 +1,6 @@
 import path from "path";
 import webpack, { Configuration } from "webpack";
+import Dotenv from "dotenv-webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin";
 
@@ -11,6 +12,7 @@ const webpackConfig = (env: any): Configuration => ({
     plugins: [new TsconfigPathsPlugin()]
   },
   output: {
+    publicPath: "/",
     path: path.join(__dirname, "/build"),
     filename: "build.js"
   },
@@ -42,8 +44,13 @@ const webpackConfig = (env: any): Configuration => ({
       "process.env.PRODUCTION": env.production || !env.development,
       "process.env.NAME": JSON.stringify(require("./package.json").name),
       "process.env.VERSION": JSON.stringify(require("./package.json").version)
-    })
-  ]
+    }),
+    new Dotenv()
+  ],
+  devServer: {
+    port: 3001,
+    historyApiFallback: true
+  }
 });
 
 export default webpackConfig;

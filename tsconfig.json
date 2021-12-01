@@ -7,9 +7,9 @@
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
-      "components/*": [
-        "src/components/*"
-      ]
+      "components/*": ["src/components/*"],
+      "services/*": ["src/services/*"],
+      "hooks/*": ["src/hooks/*"]
     },
     "resolveJsonModule": true,
     "allowJs": true,
@@ -23,8 +23,5 @@
     "noImplicitAny": true,
     "skipLibCheck": true
   },
-  "include": [
-    "./src",
-    "./webpack.config.ts"
-  ]
+  "include": ["./src", "./webpack.config.ts"]
 }

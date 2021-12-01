@@ -127,6 +127,22 @@ body {
   font-family: "Raleway", sans-serif;
 }
 
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 64px;
+}
+
+.header {
+  margin: 40px 0;
+}
+
+.page__title {
+  font-size: 52px;
+  font-weight: 300;
+  color: #333333;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -135,7 +151,7 @@ body {
   outline: none;
   border: none;
   height: 48px;
-  background: #002b56;
+  background-color: #002b56;
   color: #ffffff;
   border-radius: 2px;
   font-size: 14px;
@@ -144,6 +160,12 @@ body {
   letter-spacing: 1px;
   text-transform: uppercase;
   text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out, background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #002245;
+  }
 }
 
 .btn--outline {
@@ -151,6 +173,10 @@ body {
   background: #ffffff;
   color: #002b56;
   font-weight: 500;
+
+  &:hover {
+    background-color: #e6e6e6;
+  }
 }
 
 @keyframes fadein {

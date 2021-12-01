@@ -1,0 +1,69 @@
+.restaurant-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurant-item__image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.restaurant-item__title {
+  font-size: 1.25rem;
+  line-height: 28px;
+  letter-spacing: 1px;
+  color: #000000;
+  padding: 20px 0 0 0;
+}
+
+.restaurant-item__ratings-container {
+  font-size: 22px;
+  padding: 20px 0 0 0;
+}
+
+.restaurant-item__info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0 0 0;
+}
+
+.restaurant-item__dish-description {
+  font-size: 14px;
+  color: #757575;
+  text-transform: uppercase;
+}
+
+.restaurant-item__status-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.restaurant-item__status-icon {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.restaurant-item__status-icon--open {
+  background: #00e8a4;
+}
+
+.restaurant-item__status-icon--closed {
+  background: #ff3548;
+}
+
+.restaurant-item__status-description {
+  font-size: 14px;
+  color: #757575;
+  text-transform: uppercase;
+  margin: 0 0 0 5px;
+}
+
+.restaurant-item__cta {
+  margin: 20px 0 0 0;
+}

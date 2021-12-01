@@ -1,0 +1,51 @@
+.restaurant-review-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.restaurant-review-item__user {
+  display: flex;
+  flex-direction: row;
+}
+
+.restaurant-review-item__user-text-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0 32px;
+  width: 192px;
+}
+
+.restaurant-review-item__user__picture {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.restaurant-review-item__user__name {
+  font-size: 22px;
+  color: #000000;
+  font-weight: 500;
+}
+
+.restaurant-review-item__user__date {
+  font-size: 16px;
+  font-weight: 300;
+  color: #666666;
+  margin: 10px 0 0 0;
+}
+
+.restaurant-review-item__ratings-container {
+  font-size: 20px;
+  padding: 0;
+}
+
+.restaurant-review-item__body {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 28px;
+  letter-spacing: 1px;
+  color: #000000;
+  padding: 20px 0 0 0;
+}
