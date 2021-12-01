@@ -1,0 +1,48 @@
+{
+  "name": "superformula",
+  "version": "1.0.0",
+  "description": "Superformula Front-end Developer Coding Test",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-cli serve --mode=development --env development --open --hot",
+    "build": "webpack --mode=production --env production --progress",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:neil-okikiolu/frontend-test.git"
+  },
+  "author": "Neil Okikiolu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neil-okikiolu/frontend-test"
+  },
+  "homepage": "https://github.com/neil-okikiolu/frontend-test",
+  "devDependencies": {
+    "@types/node": "^16.11.10",
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "@types/webpack": "^5.28.0",
+    "@types/webpack-dev-server": "^4.5.0",
+    "css-loader": "^6.5.1",
+    "html-webpack-plugin": "^5.5.0",
+    "prettier": "^2.5.0",
+    "sass": "^1.44.0",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.2.6",
+    "ts-node": "^10.4.0",
+    "tsconfig-paths-webpack-plugin": "^3.5.2",
+    "typescript": "^4.5.2",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
+  },
+  "dependencies": {
+    "@types/styled-components": "^5.1.15",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "styled-components": "^5.3.3"
+  }
+}

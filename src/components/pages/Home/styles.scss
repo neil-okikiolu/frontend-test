@@ -1,0 +1,84 @@
+.container {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 0 64px;
+}
+
+.header {
+  margin: 40px 0;
+}
+
+.page__title {
+  font-size: 52px;
+  font-weight: 300;
+  line-height: 64px;
+  color: #333333;
+}
+
+.page__caption {
+  width: 50vw;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 32px;
+  margin-top: 16px;
+  color: #666666;
+}
+
+.restaurant-items__search-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border: 1px solid #e6e6e6;
+  border-left: none;
+  border-right: none;
+}
+
+.restaurant-items__search-inputs-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  & > *:not(:last-child) {
+    display: block;
+    margin: 0 20px 0 0;
+  }
+}
+
+.restaurant-items__filter-by-text {
+  font-size: 16px;
+  color: #606060;
+}
+
+.restaurant-items__clear-all-btn {
+  height: 40px !important;
+  width: 150px;
+}
+
+.restaurant-items__category {
+  font-size: 34px;
+  font-weight: 300;
+  line-height: 64px;
+  color: #333333;
+}
+
+.restaurant-items__container {
+  display: grid;
+  margin: 43px 0 0 0;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 80px 32px;
+}
+
+.restaurant-items__footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 0 100px;
+}
+
+.restaurant-item__load-more-btn {
+  width: 420px;
+}
