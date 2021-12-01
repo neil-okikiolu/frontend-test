@@ -69,7 +69,7 @@ const Home = () => {
 
         <div className="restaurant-items__container">
           {[...Array(20)].map((_, index) => (
-            <RestaurantItem />
+            <RestaurantItem key={index} />
           ))}
         </div>
 

@@ -65,9 +65,8 @@
 }
 
 .restaurant-items__container {
-  display: grid;
-  margin: 43px 0 0 0;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 80px 32px;
 }
 

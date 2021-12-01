@@ -1,4 +1,5 @@
 .restaurant-item {
+  flex: 1 0 calc(25% - 80px); // to account for our gap
   display: flex;
   flex-direction: column;
 }
@@ -23,12 +24,15 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 0 0 0;
+  flex-wrap: wrap;
 }
 
 .restaurant-item__dish-description {
   font-size: 14px;
   color: #757575;
   text-transform: uppercase;
+  padding-bottom: 10px;
+  padding-right: 10px;
 }
 
 .restaurant-item__status-container {
@@ -36,6 +40,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 10px;
 }
 
 .restaurant-item__status-icon {
