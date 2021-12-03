@@ -1,3 +1,26 @@
+# Run Instructions
+```sh
+# install dependencies
+yarn install
+
+# before starting the react app
+# this includes a proxy server to avoid the CORS issue
+docker-compose up
+
+# start the react app
+yarn start
+```
+
+## Some screens from the running app
+![Screenshot 1](screenshots/superformula-1.png)
+<br />
+<br />
+![Screenshot 2](screenshots/superformula-2.png)
+
+## Environment Variables
+I can send these over
+
+
 # Superformula Front-end Developer Coding Test
 
 Be sure to read **all** of this document carefully, and follow the guidelines within.

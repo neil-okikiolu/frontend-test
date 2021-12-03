@@ -21,7 +21,9 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitAny": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "outDir": "./build",
   },
-  "include": ["./src", "./webpack.config.ts"]
+  "include": ["./src", "./webpack.config.ts"],
+  "exclude": ["./build"]
 }
