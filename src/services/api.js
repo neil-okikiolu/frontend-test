@@ -1,17 +1,15 @@
 import axios from "axios";
+import applyCaseMiddleware from 'axios-case-converter';
 import config from "../config";
 
 const Axios = axios.create({
-  baseURL: "https://api.yelp.com/v3",
+  baseURL: "http://localhost:8081/https://api.yelp.com/v3",
   timeout: 30 * 1000,
-  headers: {
-    "Content-Type": "application/json",
-  },
 });
 
 Axios.interceptors.request.use(
   async (cfg) => {
-    const {yelpApiSecret} = config;
+    const { yelpApiSecret } = config;
     cfg.headers.Authorization = `Bearer ${yelpApiSecret}`;
     return cfg;
   },
@@ -21,4 +19,6 @@ Axios.interceptors.request.use(
   }
 );
 
-export default Axios;
+const CustomAxios = applyCaseMiddleware(Axios);
+
+export default CustomAxios;

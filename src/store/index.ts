@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import restaurantsReducer from "./slices/businessSlice";
+import businessesReducer from "./slices/businessSlice";
 
 const store = configureStore({
   reducer: {
-    restaurants: restaurantsReducer
+    businesses: businessesReducer
   }
 });
 

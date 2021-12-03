@@ -18,6 +18,8 @@ const Dropdown: React.FC<DropdownProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const container = useRef<HTMLDivElement>(null);
 
+  const selectedLabel = options.find((o) => o.value === selectedOption)?.label;
+
   const toggle = () => setIsOpen(!isOpen);
 
   useEffect(() => {
@@ -40,7 +42,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   return (
     <div ref={container} className="dropdown__container">
       <div className="dropdown__header" onClick={toggle}>
-        {selectedOption || placeholder}{" "}
+        {selectedLabel || placeholder}{" "}
         <FiChevronDown
           className={`dropdown__header__arrow ${
             isOpen ? "dropdown__header__arrow--open" : ""

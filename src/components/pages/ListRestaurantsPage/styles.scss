@@ -53,7 +53,7 @@
 
 .restaurant-items__container {
   display: grid;
-  margin: 43px 0 0 0;
+  margin: 43px 0 80px;
   grid-template-columns: repeat(4, 1fr);
   gap: 80px 32px;
 }
@@ -63,9 +63,9 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 80px 0 100px;
 }
 
 .restaurant-item__load-more-btn {
   width: 420px;
+  margin: 0 0 80px 0;
 }

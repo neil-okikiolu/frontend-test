@@ -1,41 +1,54 @@
 import Ratings from "components/shared/Ratings";
 import React from "react";
 import { Link } from "react-router-dom";
+import { BusinessProps } from "src/store/slices/businessSlice";
 import "./styles.scss";
 
-const RestaurantItem = () => (
-  <div className="restaurant-item">
-    <img
-      className="restaurant-item__image"
-      src="https://picsum.photos/400/200"
-      alt="food"
-    />
+interface RestaurantItemProps {
+  business: BusinessProps;
+}
 
-    <h3 className="restaurant-item__title">
-      Very Long Name Restaurants Number 1 In List
-    </h3>
+const RestaurantItem: React.FC<RestaurantItemProps> = ({ business }) => {
+  const { alias, name, imageUrl, isClosed, rating, price } = business;
+  const [{ title: featuredCategoryTitle }] = business.categories;
 
-    <Ratings
-      containerClassName="restaurant-item__ratings-container"
-      score={3.5}
-      maximum={5}
-    />
+  return (
+    <div className="restaurant-item">
+      <div>
+        <img className="restaurant-item__image" src={imageUrl} alt={name} />
 
-    <div className="restaurant-item__info-container">
-      <div className="restaurant-item__dish-description">Thai • $$$$</div>
-      <div className="restaurant-item__status-container">
-        <div className="restaurant-item__status-icon restaurant-item__status-icon--open" />
-        <span className="restaurant-item__status-description">Open now</span>
+        <h3 className="restaurant-item__title">{name}</h3>
+
+        <Ratings
+          containerClassName="restaurant-item__ratings-container"
+          score={rating}
+          maximum={5}
+        />
+
+        <div className="restaurant-item__info-container">
+          <div className="restaurant-item__dish-description">
+            {featuredCategoryTitle} • {price}
+          </div>
+          <div className="restaurant-item__status-container">
+            <div
+              className={`restaurant-item__status-icon ${
+                isClosed
+                  ? "restaurant-item__status-icon--closed"
+                  : "restaurant-item__status-icon--open"
+              }`}
+            />
+            <span className="restaurant-item__status-description">
+              {isClosed ? "Closed" : "Open now"}
+            </span>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <Link
-      to="/restaurants/restaurantIdHere"
-      className="btn restaurant-item__cta"
-    >
-      Learn More
-    </Link>
-  </div>
-);
+      <Link to={`/restaurants/${alias}`} className="btn restaurant-item__cta">
+        Learn More
+      </Link>
+    </div>
+  );
+};
 
 export default RestaurantItem;

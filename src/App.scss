@@ -177,6 +177,17 @@ body {
   &:hover {
     background-color: #e6e6e6;
   }
+
+  &[disabled="disabled"],
+  &:disabled {
+    color: #c8c8c8;
+    border-color: #e6e6e6;
+
+    &:hover {
+      background: none;
+      cursor: default;
+    }
+  }
 }
 
 @keyframes fadein {

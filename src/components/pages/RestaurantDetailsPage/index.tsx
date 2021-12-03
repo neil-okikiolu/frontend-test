@@ -1,25 +1,118 @@
 import Ratings from "components/shared/Ratings";
-import React from "react";
+import { useAppDispatch } from "../../../hooks";
+import React, { useEffect, useState } from "react";
 import RestaurantReviewItem from "./components/RestaurantReviewItem";
-// import RestaurantItem from "./components/RestaurantItem";
+import {
+  getBusinessRequest,
+  GetBusinessResponse,
+  BusinessReviewProps,
+  getBusinessReviewsRequest
+} from "../../../store/slices/businessSlice";
 import "./styles.scss";
+import { useParams } from "react-router";
+import produce from "immer";
+import { unwrapResult } from "@reduxjs/toolkit";
+import BusinessMap from "./components/BusinessMap";
+
+interface StateProps {
+  isFetchingDetails: boolean;
+  isFetchingReviews: boolean;
+  businessDetails: GetBusinessResponse;
+  businessReviews: BusinessReviewProps[];
+}
 
 const RestaurantDetailsPage = () => {
+  const dispatch = useAppDispatch();
+  const { id: businessId } = useParams();
+
+  const [state, setState] = useState<StateProps>({
+    isFetchingDetails: true,
+    isFetchingReviews: true,
+    businessDetails: {
+      id: "",
+      alias: "",
+      name: "",
+      coordinates: {
+        longitude: 0,
+        latitude: 0
+      },
+      location: {
+        displayAddress: []
+      },
+      categories: [],
+      isClosed: false,
+      imageUrl: "",
+      photos: [],
+      price: "",
+      reviewCount: 0,
+      rating: 0
+    },
+    businessReviews: []
+  });
+
+  const featuredCategoryTitle =
+    state.businessDetails?.categories[0]?.title || "";
+
+  useEffect(() => {
+    if (businessId) {
+      getBusiness(businessId);
+      getBusinessReviews(businessId);
+    }
+  }, [businessId]);
+
+  const getBusiness = async (id: string) => {
+    const resultAction = await dispatch(getBusinessRequest(id));
+
+    if (getBusinessRequest.fulfilled.match(resultAction)) {
+      const response = unwrapResult(resultAction);
+      setState(
+        produce((draft) => {
+          draft.isFetchingDetails = false;
+          draft.businessDetails = response;
+        })
+      );
+    }
+  };
+
+  const getBusinessReviews = async (id: string) => {
+    const resultAction = await dispatch(getBusinessReviewsRequest(id));
+
+    if (getBusinessReviewsRequest.fulfilled.match(resultAction)) {
+      const response = unwrapResult(resultAction);
+      setState(
+        produce((draft) => {
+          draft.isFetchingReviews = false;
+          draft.businessReviews = response.reviews;
+        })
+      );
+    }
+  };
+
   return (
     <>
       <header className="header">
         <div className="container">
-          <h1 className="page__title">Restaurant 3</h1>
+          <h1 className="page__title">{state.businessDetails.name}</h1>
           <Ratings
             containerClassName="restaurant__ratings-container"
-            score={3.5}
+            score={state.businessDetails.rating}
             maximum={5}
           />
           <div className="restaurant__info-container">
-            <div className="restaurant__dish-description">Thai • $$$$</div>
+            <div className="restaurant__dish-description">
+              {featuredCategoryTitle} • {state.businessDetails.price}
+            </div>
             <div className="restaurant__status-container">
-              <div className="restaurant__status-icon restaurant__status-icon--open" />
-              <span className="restaurant__status-description">Open Now</span>
+              <div
+                className={`restaurant__status-icon ${
+                  state.businessDetails.isClosed
+                    ? "restaurant__status-icon--closed"
+                    : "restaurant__status-icon--open"
+                }`}
+              />
+              <span className="restaurant__status-description">
+                {state.businessDetails.isClosed ? "Closed" : "Open now"}
+              </span>
             </div>
           </div>
         </div>
@@ -28,31 +121,37 @@ const RestaurantDetailsPage = () => {
       <div className="restaurant__description-container">
         <div className="container">
           <div className="restaurant__map-and-images-grid">
-            <div>sdsdsd</div>
-            <img
-              className="restaurant__featured-picture"
-              src="https://picsum.photos/400/200"
-              alt="food"
-            />
-            <img
-              className="restaurant__featured-picture"
-              src="https://picsum.photos/400/200"
-              alt="food"
-            />
+            <div>
+              <BusinessMap
+                coordinates={state.businessDetails.coordinates}
+                mapMarkerIconClass="restaurant__map-marker-icon"
+              />
+            </div>
+            {state.businessDetails.photos.slice(0, 2).map((photo) => (
+              <div key={photo}>
+                <img
+                  className="restaurant__featured-picture"
+                  src={photo}
+                  alt={state.businessDetails.name}
+                />
+              </div>
+            ))}
           </div>
           <div className="restaurant__description__address">
-            624 S La Brea Ave Los Angeles, CA 90036
+            {state.businessDetails.location.displayAddress.join(", ")}
           </div>
         </div>
       </div>
 
       <section className="restaurant-review-items__wrapper">
         <div className="container">
-          <h3 className="restaurant-review-items__count">321 Reviews</h3>
+          <h3 className="restaurant-review-items__count">
+            {state.businessDetails.reviewCount} Reviews
+          </h3>
 
           <div className="restaurant-review-items__container">
-            {[...Array(3)].map((_, index) => (
-              <RestaurantReviewItem />
+            {state.businessReviews.map((review) => (
+              <RestaurantReviewItem key={review.id} review={review} />
             ))}
           </div>
         </div>

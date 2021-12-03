@@ -1,0 +1,8 @@
+version: '3'
+services:
+  cors-anywhere:
+    image: redocly/cors-anywhere:latest
+    ports:
+      - '8081:8081'
+    environment:
+      - PORT=8081

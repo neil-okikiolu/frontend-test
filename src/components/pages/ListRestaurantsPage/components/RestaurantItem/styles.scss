@@ -1,6 +1,7 @@
 .restaurant-item {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .restaurant-item__image {
